@@ -1,6 +1,7 @@
 package com.tydic.ares.controller;
 
 
+import com.tydic.ares.constant.ContentType;
 import com.tydic.ares.entity.AddEndpointForLWM2MDeviceRequest;
 import com.tydic.ares.entity.AddEndpointForLWM2MDeviceResponse;
 import com.tydic.ares.entity.AdditionalParams;
@@ -38,6 +39,13 @@ public class AddEndpointForLWM2MDeviceController
     @Autowired
     private AddEndpointForLWM2MDeviceService addEndpointForLWM2MDeviceService;
 
+    /**
+     * @param request
+     * @param response
+     * @param parameters
+     *
+     * @return
+     */
     @RequestMapping(value = "/endpoints", method = RequestMethod.POST)
     public AddEndpointForLWM2MDeviceResponse addEndpointForLWM2MDevice(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
@@ -107,5 +115,54 @@ public class AddEndpointForLWM2MDeviceController
         }
         AddEndpointForLWM2MDeviceResponse addEndpointForLWM2MDeviceResponse = addEndpointForLWM2MDeviceService.addEndpointForLWM2MDevice(addEndpointForLWM2MDeviceRequest);
         return addEndpointForLWM2MDeviceResponse;
+    }
+
+    /**
+     * @param request
+     * @param response
+     * @param parameters
+     *
+     * @return
+     */
+    @RequestMapping(value = "/common/post", method = RequestMethod.POST)
+    public String commonPost(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
+    {
+        try
+        {
+            logger.info("------开始打印消息头信息------");
+
+            String contentType = request.getHeader("Content-Type");
+            logger.info("Content-Type:" + contentType);
+
+            String accept = request.getHeader("Accept");
+            logger.info("Accept:" + accept);
+
+            String authorization = request.getHeader("Authorization");
+            logger.info("Authorization:" + authorization);
+
+            logger.info("------打印消息头信息结束------");
+
+            //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
+            logger.info("------开始打印请求报文------");
+
+            if (ContentType.JSON.value().equals(contentType))
+            {
+                logger.info("请求报文:" + parameters);
+            }
+            else if (ContentType.FORM.value().equals(contentType))
+            {
+                logger.info("请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
+            }
+
+            logger.info("------打印请求报文结束------");
+        } catch (JSONException e)
+        {
+            throw new RuntimeException("字符串转json出错");
+        } catch (Exception e)
+        {
+            throw new RuntimeException("程序发生不可知的错误");
+        }
+        String success = "OPERATE SUCCESS";
+        return success;
     }
 }
