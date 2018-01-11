@@ -194,14 +194,7 @@ public class AddEndpointForLWM2MDeviceController
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
             logger.info("------开始打印GET请求报文------");
 
-            if (ContentType.JSON.value().equals(contentType))
-            {
-                logger.info("请求报文:" + parameters);
-            }
-            else if (ContentType.FORM.value().equals(contentType))
-            {
-                logger.info("请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
-            }
+            logger.info("请求报文:" + parameters);
 
             logger.info("------打印GET请求报文结束------");
         } catch (JSONException e)
