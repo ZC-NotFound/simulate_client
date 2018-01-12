@@ -60,6 +60,7 @@ public class CommonServerController
         logger.info("Content-Type:" + contentType);
         String authorization = httpServletRequest.getHeader("Authorization");
         logger.info("Authorization:" + authorization);
+        logger.info("请求方式：" + httpServletRequest.getMethod());
 
         logger.info("queryString: " + httpServletRequest.getQueryString());
         logger.info("parameterMap: " + httpServletRequest.getParameterMap());
@@ -105,6 +106,7 @@ public class CommonServerController
         logger.info("Content-Type:" + contentType);
         String authorization = httpServletRequest.getHeader("Authorization");
         logger.info("Authorization:" + authorization);
+        logger.info("请求方式：" + httpServletRequest.getMethod());
 
         logger.info("queryString: " + httpServletRequest.getQueryString());
         logger.info("parameterMap: " + httpServletRequest.getParameterMap());
