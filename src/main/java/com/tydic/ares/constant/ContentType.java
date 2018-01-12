@@ -19,7 +19,6 @@ public enum ContentType
     ContentType(String str)
     {
         this.str = str;
-
     }
 
     //提供公共方法获取枚举值
