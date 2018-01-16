@@ -16,12 +16,12 @@ import java.util.Map;
 
 /**
  * @author Ares
- * @date 2018/1/11 14:38
+ * @date 2018/1/16 11:03
  */
 
 @RestController
 @RequestMapping(value = "/m2m")
-public class GetController
+public class DELETEController
 {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -32,12 +32,12 @@ public class GetController
      *
      * @return
      */
-    @RequestMapping(value = "/common/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/common/delete", method = RequestMethod.DELETE)
     public String commonGet(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try
         {
-            logger.info("------开始打印GET消息头信息------");
+            logger.info("------开始打印DELETE消息头信息------");
 
             String contentType = request.getHeader("Content-Type");
             logger.info("Content-Type:" + contentType);
@@ -48,14 +48,15 @@ public class GetController
             String authorization = request.getHeader("Authorization");
             logger.info("Authorization:" + authorization);
 
-            logger.info("------打印GET消息头信息结束------");
+            logger.info("------打印DELETE消息头信息结束------");
 
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
-            logger.info("------开始打印GET请求报文------");
+            logger.info("------开始打印DELETE请求报文------");
 
-            logger.info("请求报文:" + parameters);
+            logger.info("url中请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
+            logger.info("消息体中请求报文:" + parameters);
 
-            logger.info("------打印GET请求报文结束------");
+            logger.info("------打印DELETE请求报文结束------");
         } catch (JSONException e)
         {
             throw new RuntimeException("字符串转json出错");
