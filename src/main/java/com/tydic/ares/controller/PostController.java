@@ -39,7 +39,7 @@ public class PostController
     {
         try
         {
-            logger.info("------开始打印消息头信息------");
+            logger.info("------开始打印Post消息头信息------");
 
             String contentType = request.getHeader("Content-Type");
             logger.info("Content-Type:" + contentType);
@@ -50,10 +50,10 @@ public class PostController
             String authorization = request.getHeader("Authorization");
             logger.info("Authorization:" + authorization);
 
-            logger.info("------打印消息头信息结束------");
+            logger.info("------打印Post消息头信息结束------");
 
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
-            logger.info("------开始打印请求报文------");
+            logger.info("------开始打印Post请求报文------");
 
             if (contentType.contains(ContentType.JSON.value()))
             {
@@ -65,10 +65,10 @@ public class PostController
             }
             else
             {
-                logger.info("消息头为‘" + contentType + "’不符合规范");
+                logger.info("消息头‘" + contentType + "’不符合规范");
             }
 
-            logger.info("------打印请求报文结束------");
+            logger.info("------打印请求Post报文结束------");
         } catch (JSONException e)
         {
             throw new RuntimeException("字符串转json出错");
