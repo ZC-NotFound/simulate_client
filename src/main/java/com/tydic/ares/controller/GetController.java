@@ -54,6 +54,7 @@ public class GetController
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
             logger.info("------开始打印GET请求报文------");
 
+            logger.info("请求路径:" + request.getServletPath());
             logger.info("url中?后请求参数:" + JSONObject.fromObject(request.getParameterMap()).toString());
             logger.info("消息体中请求参数:" + parameters);
 

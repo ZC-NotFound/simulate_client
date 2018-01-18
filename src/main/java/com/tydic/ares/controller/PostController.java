@@ -55,6 +55,7 @@ public class PostController
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
             logger.info("------开始打印Post请求报文------");
 
+            logger.info("请求路径:" + request.getServletPath());
             if (contentType.contains(ContentType.JSON.value()))
             {
                 logger.info("请求报文:" + parameters);

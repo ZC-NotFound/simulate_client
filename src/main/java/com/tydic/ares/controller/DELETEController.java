@@ -53,6 +53,7 @@ public class DELETEController
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
             logger.info("------开始打印DELETE请求报文------");
 
+            logger.info("请求路径:" + request.getServletPath());
             logger.info("url中请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
             logger.info("消息体中请求报文:" + parameters);
 
