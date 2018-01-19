@@ -3,6 +3,8 @@ package com.tydic.ares.service;
 import com.tydic.ares.entity.AddEndpointForLWM2MDeviceRequest;
 import com.tydic.ares.entity.AddEndpointForLWM2MDeviceResponse;
 import com.tydic.ares.intfce.AddEndpointForLWM2MDeviceService;
+import com.tydic.ares.utils.ParseJsonUtil;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -32,9 +34,10 @@ public class AddEndpointForLWM2MDeviceServiceImpl implements AddEndpointForLWM2M
 
         logger.info("------开始构造返回参数------");
 
-        String msg = "Device Added Successfully";
-        logger.info("msg:" + msg);
-        addEndpointForLWM2MDeviceResponse.setMsg(msg);
+        String responseMessage = ParseJsonUtil.parseJson("json/AddEndpointforLWM2MDevice.json");
+        logger.info("返回参数为:" + responseMessage);
+        JSONObject jsonObject = JSONObject.fromObject(responseMessage);
+        addEndpointForLWM2MDeviceResponse.setMsg(jsonObject.getString("msg"));
 
         logger.info("------构造返回参数结束------");
 

@@ -56,7 +56,9 @@ public class PostController
             logger.info("------开始打印Post请求报文------");
 
             logger.info("请求路径:" + request.getServletPath());
-            if (contentType.contains(ContentType.JSON.value()))
+            logger.info("url中?后请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
+            logger.info("消息体中请求报文:" + parameters);
+            /*if (contentType.contains(ContentType.JSON.value()))
             {
                 logger.info("请求报文:" + parameters);
             }
@@ -67,7 +69,7 @@ public class PostController
             else
             {
                 logger.info("消息头‘" + contentType + "’不符合规范");
-            }
+            }*/
 
             logger.info("------打印请求Post报文结束------");
         } catch (JSONException e)
