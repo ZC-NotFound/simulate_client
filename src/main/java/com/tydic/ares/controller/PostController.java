@@ -50,6 +50,9 @@ public class PostController
             String authorization = request.getHeader("Authorization");
             logger.info("Authorization:" + authorization);
 
+            String appKey = request.getHeader("appKey");
+            logger.info("appKey:" + appKey);
+
             logger.info("------打印Post消息头信息结束------");
 
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
