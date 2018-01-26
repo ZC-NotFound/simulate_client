@@ -80,7 +80,7 @@ public class PUTController
      *
      * @return
      */
-    @RequestMapping(value = "/common/put/{param}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/common/put/**}", method = RequestMethod.PUT)
     public String commonGetWithParam(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try
@@ -104,7 +104,7 @@ public class PUTController
             //当报文为application/json时参数从parameters中获取，当报文为application/x-www-form-urlencoded时参数从request中获取
             logger.info("------开始打印带动态参数的PUT请求报文------");
 
-            String params = request.getServletPath().replace("/m2m/common/put/", "").replaceAll("\\{", "").replaceAll("}", ",");
+            String params = request.getServletPath().replace("/m2m/common/put", "").replaceAll("/", "").replaceAll("\\{", "").replaceAll("}", ",");
             logger.info("url中/后请求参数:" + params.substring(0, params.length() - 1));
             logger.info("url中?后请求报文:" + JSONObject.fromObject(request.getParameterMap()).toString());
             logger.info("消息体中请求报文:" + parameters);
