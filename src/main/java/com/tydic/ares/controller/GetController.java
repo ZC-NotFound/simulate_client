@@ -81,7 +81,7 @@ public class GetController
      * @param parameters
      * @return
      */
-    @RequestMapping(value = "/common/get/**", method = RequestMethod.GET)
+    @RequestMapping(value = "/common/get/**/**", method = RequestMethod.GET)
     public String commonGetWithParam(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try

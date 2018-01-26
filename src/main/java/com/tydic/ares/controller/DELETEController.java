@@ -80,7 +80,7 @@ public class DELETEController
      *
      * @return
      */
-    @RequestMapping(value = "/common/delete/**", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/common/delete/**/**", method = RequestMethod.DELETE)
     public String commonGetWithParam(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try

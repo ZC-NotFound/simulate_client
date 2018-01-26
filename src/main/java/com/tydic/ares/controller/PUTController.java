@@ -80,7 +80,7 @@ public class PUTController
      *
      * @return
      */
-    @RequestMapping(value = "/common/put/**}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/common/put/**/**", method = RequestMethod.PUT)
     public String commonGetWithParam(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try

@@ -94,7 +94,7 @@ public class PostController
      *
      * @return
      */
-    @RequestMapping(value = "/common/post/**", method = RequestMethod.POST)
+    @RequestMapping(value = "/common/post/**/**", method = RequestMethod.POST)
     public String commonPostWithParam(HttpServletRequest request, HttpServletResponse response, @RequestBody(required = false) String parameters)
     {
         try
