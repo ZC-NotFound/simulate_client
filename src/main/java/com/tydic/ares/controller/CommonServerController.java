@@ -98,7 +98,7 @@ public class CommonServerController
         {
             logger.error("", e);
         }
-        responseMap.put("msg", "SELF OPERATE SUCCESS");
+        responseMap.put("msg", "SELF OPERATE SUCCESS, 成功了,测试中文是否乱码");
         responseMap.put("code", "0000");
         return JSONObject.fromObject(responseMap).toString();
     }
